@@ -1,11 +1,18 @@
-const Employee = require('../lib/employee');
+const Employee = require('../lib/Employee');
 
-console.log(new Employee());
+const employee = new Employee("John", 10, "john@gmail.com");
 
 test('create an employee object', () => {
-    const employee = new Employee();
-
-    expect(employee.name).tobe('John');
+    expect(typeof employee).toBe("object")
+    expect(employee.name).toBe('John');
     expect(employee.id).toEqual(10);
-    expect(employee.email).tobe('john@gmail.com');
+    expect(employee.email).toBe('john@gmail.com');
+});
+
+test('Class employee has property name', () => {
+    expect(employee.name).toBe('John');
+});
+
+test('Class employee has method that returns name', () => {
+    expect(employee.getName()).toBe('John');
 });

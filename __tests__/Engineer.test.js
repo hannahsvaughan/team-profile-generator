@@ -1,5 +1,5 @@
 const { expect } = require('expect');
-const Engineer = require('../lib/engineer');
+const Engineer = require('../lib/Engineer');
 
 console.log(new Engineer());
 
