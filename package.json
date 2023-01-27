@@ -1,7 +1,6 @@
 {
   "scripts": {
-    "test": "jest",
-    "poop": "node index"
+    "test": "jest"
   },
   "dependencies": {
     "inquirer": "^8.2.4",
