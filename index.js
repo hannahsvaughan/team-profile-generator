@@ -34,19 +34,6 @@ function generateHtmlFile () {
     writeToFile ( htmlTempArr );
 };
 
-addManagerProfile() {
-    let firstQues = Questions(Manager);
-    inquirer.prompt(firstQues)
-    .then ( answers => {
-         teamArray.push (new Manager(
-            answers.managerName,
-            answers.managerId,
-            answers.managerEmail,
-            answers.officeNum
-            ));
-        }
-    }
-
 function init() {
     inquirer.prompt([
 
