@@ -9,10 +9,10 @@ AS A manager
 I WANT to generate a webpage that displays my team's basic info
 SO THAT I have quick access to their emails and GitHub profiles
 
-## Final Screenshot
-
 ## Video Recording
+
+https://drive.google.com/file/d/1wd3I3RIGXcgjBihuG35jU0ZEClKNwaQH/view
 
 ## GitHub Repo
 
-## Example HTML Location
+https://github.com/hannahsvaughan/team-profile-generator.git
