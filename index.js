@@ -1,20 +1,75 @@
-const { default: inquirer } = require('inquirer');
-// const Team = require('./lib/Team');
+//Application dependencies
+const fs = require("fs");
+const inquirer = require('inquirer');
+
 const Questions = require("./lib/Questions");
+const Manager = require("./lib/Manager")
 const Employee = require("./lib/Employee");
-// add others under here
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern")
+const htmlTemp = require("./src/template");
 
-const Team = [];
+let teamArray = [];
 
-// Function to initalize the app
+const writeToFile = ( htmlTempArr ) => { 
+    return new Promise (( resolve, reject ) => {
+        outputFileName = teamArray[ 0 ].toLowerCase();
 
-// add array for team members to go in - promt the question and then the user selects "manager" then push the object to the team array then the question will loop again
-// push second object to team array again
-// use constructor to build the object
-// new Team().initializeTeam();
+        fs.writeFile( `./dist/${outputFileName}.html`,join( ""), function (err) {
+            if (err) {
+                reject (err);
+                return;
+            };
 
-// inquirer.prompt(new Questions("Manager").getLastQuestion())
-// .then {
-//     const 
-// }
-// answer.name
+            resolve( {
+                ok: true,
+                message: 'File created! Your output HTML file is located in the "dist" folder.'
+            });
+        });
+    });
+};
+
+function generateHtmlFile () {
+    const htmlTempArr = htmlTemp.generateHTML( htmlTempArr );
+    writeToFile ( htmlTempArr );
+};
+
+addManagerProfile() {
+    let firstQues = Questions(Manager);
+    inquirer.prompt(firstQues)
+    .then ( answers => {
+         teamArray.push (new Manager(
+            answers.managerName,
+            answers.managerId,
+            answers.managerEmail,
+            answers.officeNum
+            ));
+        }
+    }
+
+function init() {
+    inquirer.prompt([
+
+        {
+            message: "Welcome to the Team Profile Generator. Input your team name: ",
+            name: "teamName",
+            validate: teamNameInput => {
+                if ( teamNameInput && teamNameInput.trim().length > 0 ) {
+                    return true;
+                }
+                else {
+                    console.log("Input your team name:");
+                    return false;
+                };
+            }
+        }
+    ])
+    .then( function (data) {
+        const teamName = data.teamName;
+        teamArray.push( teamName );
+        addManagerProfile();
+    });
+};
+
+init();
+
